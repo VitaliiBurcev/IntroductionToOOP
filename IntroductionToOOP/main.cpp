@@ -1,6 +1,8 @@
 //IntroductionToOOP
 #include<iostream>
 using namespace std;
+
+
 class Point // при Class  все пол€ приватные
 {
 
@@ -30,9 +32,71 @@ public: //публичные пишутс€ под приватными
 		this->y = y;
 	}
 
+	// Constructors:
+	/*Point()
+	{
+		x = y = 0;
+		cout << "Constructor: \t" << this << endl;
+	}
+	*/
+	/*Point(double x)
+	{
+		this->x = x;
+		y = 0;
+
+		cout << "1ArgConstructor: \t" << this << endl;
+	}
+	*/
+	Point(double x = 0, double y= 0)
+	{
+		this->x = x;
+		this->y = y;
+		
+
+		cout << "Constructor: \t" << this << endl;
+	}
+
+
+
+	~Point()
+	{
+		cout << "Destructor: \t" << this << endl;
+	}
+
+
+
+
+	// Method:
+	double distance(Point other)
+	{
+		//this это точка;
+		//other это друга€ точка до которой считаем дистанце (указанна€ точка);
+		double x_distance = this->x - other.x;
+		double y_distance = this->y - other.y;
+		double distance = sqrt(x_distance * x_distance + y_distance * y_distance);
+		return distance;
+	}
+
+	void print()
+	{
+		cout << "X= " << x << "\tY = " << y << endl;
+	}
+
 };
 
+double distance(Point A, Point B)
+{
+	//this это точка;
+		//other это друга€ точка до которой считаем дистанце (указанна€ точка);
+	double x_distance = A.get_x() - B.get_x();
+	double y_distance = A.get_y() - B.get_y();
+		
+	return sqrt(x_distance * x_distance + y_distance * y_distance);
+}
+
 //define STRUCT_POINT
+
+//define DISTANCE_CHECK
 
 
 
@@ -58,14 +122,38 @@ void main()
 	cout << pA->x << "\t" << pA->y << endl;
 
 #endif STRUCT_POINT
-
+#ifdef	DISTANCE_CHECK
 	Point A;
 	A.set_x(2);
 	A.set_y(3);
+	A.print();
+	//cout << A.get_x() << "\t" << A.get_y() << endl;
 
-	cout << A.get_x() << "\t" << A.get_y() << endl;
+	Point B;
+	B.set_x(7);
+	B.set_y(8);
+	//cout << B.get_x() << "\t" << B.get_y() << endl;
+	B.print();
+
+	cout << "рассто€ние от точки ј до точки ¬: " << A.distance(B) << endl;
+	cout << "рассто€ние от точки B до точки A: " << B.distance(A) << endl;
+
+	cout << "рассто€ние между точками ј до точки ¬: " << distance(A,B) << endl;
+	cout << "рассто€ние между точками ¬ до точки ј: " << distance(B,A) << endl;
+
+
+#endif DISTANCE_CHECK
+
+	Point A; // Default constractor
+	A.print();
+	Point B = 5;
+	B.print();
+	
+	Point C(2,3);
+	C.print();
 
 }
+
 
 /*
 . Ёто оператор пр€мого доступа (Point operator)
@@ -83,8 +171,8 @@ public: открытые пол€ доступные из лббого места программы
 
 protected: «ащищенные пол€
 
-
-
-
-
 */
+
+//2.
+
+
