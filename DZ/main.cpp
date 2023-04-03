@@ -64,3 +64,4 @@ void main()
 
 	cout << A.get_x() << "\t" << A.get_y() << endl;
 
+}
